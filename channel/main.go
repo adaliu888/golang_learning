@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"ada/channel/third"
+	"fmt"
+)
 
-//create new channel
+// create new channel
 func main() {
+	const s int = 5
 	var a int = 0
 	ch := make(chan int) //make a channel,deflaut not input the number of channel
 
@@ -12,7 +16,7 @@ func main() {
 
 		ch <- sum //ch send message from var sum
 
-	}(1, 2)
+	}(int(third.Sqrt(1)), 2)
 
 	r := <-ch //r get message from ch recive message
 
