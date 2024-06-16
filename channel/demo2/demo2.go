@@ -13,6 +13,6 @@ func main() {
 		ch <- 1                     //send a message
 	}()
 
-	val := <-ch //receave the message
+	val := <-ch //receive the message
 	fmt.Println(val)
 }

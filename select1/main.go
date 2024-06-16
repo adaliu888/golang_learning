@@ -1,6 +1,6 @@
 package main
 
 func main() {
-	select {}
+	//select {} // all goroutines are asleep - deadlock!
 
 }

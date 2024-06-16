@@ -15,7 +15,7 @@ func main() {
 		time.Sleep(1 * time.Second)
 		ch2 <- 2
 	}()
-	select {
+	select { //usage
 	case <-ch1:
 		println("ch1")
 	case <-ch2:

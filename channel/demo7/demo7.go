@@ -21,10 +21,9 @@ func main() {
 	ch10 := make(chan chan int)      //type is channel int
 	ch11 := make(chan chan chan int) //type is reduce channel int
 	ch12 := make(chan func())        //type is function
-	type book interface {
-		name() string
-	}
+
 	ch13 := make(chan interface{}) //type is interface
+
 	go func() {
 		ch1 <- 1
 	}()
@@ -67,7 +66,7 @@ func main() {
 		}
 	}()
 	go func() {
-        ch13 <- 
+		ch13 <- "hello world"
 	}()
 	fmt.Println(<-ch1)
 	fmt.Println(<-ch2)
@@ -82,5 +81,6 @@ func main() {
 	fmt.Println(<-ch11)
 	f := <-ch12
 	f()
+	fmt.Println(<-ch13)
 
 }

@@ -10,6 +10,7 @@ import (
 var bob = titleName("bob")
 var smith = titleName("smith")
 
+// init function will be executed before main function
 func init() {
 	fmt.Println("hi", bob)
 
