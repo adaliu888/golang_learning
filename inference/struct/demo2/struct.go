@@ -1,6 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
+
+type Driver struct {
+	ch chan int
+}
+
+func (o *Driver) Constructor() {
+	o.ch = make(chan int)
+
+	o.ch <- 1
+
+	go func() {
+		a := <-o.ch
+		fmt.Printf("a: %v\n", a)
+	}()
+
+}
 
 type Person struct {
 	Next *Person
@@ -32,7 +50,7 @@ func (o *Mystruct) Constructor(field1 string, filed2 string) { //use Constructor
 	o.filed2 = filed2
 }
 
-//接口
+// 接口
 type Animal interface {
 	string() string
 }
@@ -67,5 +85,8 @@ func main() {
 	//嵌套接口
 	newcat := &cat{}
 	fmt.Println(newcat.speak())
+	//嵌套管道
+	newch := &Driver{}
+	fmt.Println(newch.ch)
 
 }
