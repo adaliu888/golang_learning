@@ -1,5 +1,6 @@
 package abs
 
+// Test abs function with -1, 0, 1
 import (
 	"testing"
 )
