@@ -24,6 +24,6 @@ func main() {
 		fmt.Println("没有找到值")
 	}
 	// print context value
-	PrintValue(ctxv)
+	fmt.Println(ctxv)
 
 }

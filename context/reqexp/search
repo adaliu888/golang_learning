@@ -1,0 +1,40 @@
+package main
+
+import (
+	"context"
+	"fmt"
+	"log"
+
+	"github.com/chromedp/chromedp"
+)
+
+func main() {
+	// 创建一个新的Chrome实例
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	// 创建chromedp执行者
+	opts := append(chromedp.DefaultExecAllocatorOptions[:],
+		chromedp.Flag("headless", false), // 设置为true可以隐藏浏览器界面
+	)
+	allocCtx, _ := chromedp.NewExecAllocator(ctx, opts...)
+	defer allocCtx.Wait()
+
+	// 创建一个新的浏览器会话
+	sel := chromedp.NewContext(allocCtx)
+
+	// 创建chromedp任务
+	tasks := []chromedp.Action{
+		chromedp.Navigate(`https://www.baidu.com`),                                 // 导航到百度首页
+		chromedp.WaitVisible(`#kw`, chromedp.ByQuery),                              // 等待搜索框可见
+		chromedp.SendKeys(`#kw`, "Go语言教程", chromedp.NodeVisible, chromedp.ByQuery), // 在搜索框中输入搜索条件
+		// 你可以根据需要添加更多任务，例如点击搜索按钮或等待结果加载
+	}
+
+	// 运行任务
+	if err := chromedp.Run(ctx, allocCtx, sel, tasks...); err != nil {
+		log.Fatalf("Failed to run chromedp: %v", err)
+	}
+
+	fmt.Println("Search completed.")
+}

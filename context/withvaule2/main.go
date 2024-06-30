@@ -26,6 +26,7 @@ type Respones struct {
 	err   error
 }
 
+// context.context is used to share information between goroutines
 func fetchUserData(ctx context.Context, userID int) (int, error) { //
 	val := ctx.Value("foo")
 	fmt.Println(val)
