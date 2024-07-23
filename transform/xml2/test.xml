@@ -1,0 +1,21 @@
+<ZIP_result>
+    <result name="ZipSearchXML"/>
+    <result version="1.01"/>
+    <result request_url="http%3A%2F%2Fzip.cgis.biz%2Fxml%2Fzip.php%3Fzn%3D1310045"/>
+    <result request_zip_num="1310045"/>
+    <result request_zip_version="none"/>
+    <result result_code="1"/>
+    <result result_zip_num="1310045"/>
+    <result result_zip_version="0"/>
+    <result result_values_count="1"/>
+    <ADDRESS_value>
+        <value state_kana="トウキョウト"/>
+        <value city_kana="スミダク"/>
+        <value address_kana="オシアゲ"/>
+        <value company_kana="none"/>
+        <value state="東京都"/>
+        <value city="墨田区"/>
+        <value address="押上"/>
+        <value company="none"/>
+    </ADDRESS_value>
+</ZIP_result>

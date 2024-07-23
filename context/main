@@ -29,4 +29,5 @@ func main() {
 		panic(err)
 	}
 	fmt.Printf("download image of size %d\n", len(imageData))
+
 }

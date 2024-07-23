@@ -27,13 +27,13 @@ func main() {
 		return
 	}
 	defer file.Close()
-	data, err := ioutil.ReadAll(file)
+	data, err := ioutil.ReadAll(file) //使用ioutil.ReadAll读取文件的全部内容
 	if err != nil {
 		fmt.Printf("error: %v", err)
 		return
 	}
 	v := Recurlyservers{}
-	err = xml.Unmarshal(data, &v)
+	err = xml.Unmarshal(data, &v) //使用xml.Unmarshal函数将读取的XML数据解析到Recurlyservers类型的变量v中
 	if err != nil {
 		fmt.Printf("error: %v", err)
 		return

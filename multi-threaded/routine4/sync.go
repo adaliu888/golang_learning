@@ -5,6 +5,7 @@ import (
 	"sync"
 )
 
+// 同步启动5个routine
 func main() {
 	var wg sync.WaitGroup
 	wg.Add(5)

@@ -5,12 +5,21 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"time"
 )
 
 func main() {
+	ctx := context.Background()
+	// 创建一个 context，当 context 被 cancel 或者 timeout 后，goroutine 退出
+	ctx, cancel := context.WithCancel(ctx)
+	defer cancel()
+
 	ch := make(chan int)
+
+	// 创建一个goroutine，用于向channel中发送数据
+	//channel 已经赋值
 
 	// 创建一个goroutine，使用select语句接收channel中的数据
 	go func() {
@@ -23,6 +32,9 @@ func main() {
 					return // 退出goroutine
 				}
 				fmt.Printf("Received message: %d\n", msg)
+			case <-ctx.Done():
+				// 如果context被cancel，退出goroutine
+				fmt.Println("Context is canceled, exiting goroutine.")
 			default:
 				// 这里可以放置一些默认行为，例如打印日志或执行其他任务
 				fmt.Println("Channel is empty, no message received.")
@@ -37,12 +49,14 @@ func main() {
 	ch <- 3
 
 	// 休眠一段时间，确保goroutine有时间接收数据
-	time.Sleep(2 * time.Second)
+	//time.Sleep(2 * time.Second)
 
 	// 关闭channel，这将触发goroutine中的case子句完成
 	close(ch)
 
 	// 再次休眠，确保goroutine有时间退出
+	//time.Sleep(2 * time.Second)
+	cancel()
 	time.Sleep(2 * time.Second)
 }
 

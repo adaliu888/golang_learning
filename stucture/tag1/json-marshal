@@ -1,0 +1,63 @@
+package main
+
+//struct tag
+
+import (
+	"encoding/json"
+	"fmt"
+	"reflect"
+)
+
+// 定义一个Person结构体,通过Tag来增强结构体的定义,Tag会带上一些meta信息
+
+type Person struct {
+	Name string `json:"name"` // 字段Name使用json标签来指定json键名
+	Age  int    `json:"age"`  // 字段Age使用json标签来指定json键名
+}
+
+func main() {
+	p := Person{
+		Name: "John",
+		Age:  30,
+	}
+	fmt.Println(p)
+	jsonStr, err := json.Marshal(p) //Marshal方法将Go值转换为JSON
+
+	fmt.Println("jsonStr:", jsonStr) //jsonStr is AsciiBytes for json
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("jsonStr:", string(jsonStr))
+	fmt.Println("------------------------------------------------------------------")
+
+	var p1 Person
+	err = json.Unmarshal(jsonStr, &p1)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("p1:", p1)
+	// 结构体tag的使用
+	fmt.Println("p1.Name:", p1.Name)
+	fmt.Println("p1.Age:", p1.Age)
+
+	jsonStr2 := `{"name":"John","age":30}`
+	var p2 Person
+	err = json.Unmarshal([]byte(jsonStr2), &p2)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println("p2:", p2)
+	fmt.Println("p2.Name:", p2.Name)
+	fmt.Println("p2.Age:", p2.Age)
+
+	// 获取结构体tag
+	t := reflect.TypeOf(p2)
+	field, _ := t.FieldByName("Name")
+	fmt.Println("Name field tag:", field.Tag.Get("json"))
+	field, _ = t.FieldByName("Age")
+	fmt.Println("Age field tag:", field.Tag.Get("json"))
+}

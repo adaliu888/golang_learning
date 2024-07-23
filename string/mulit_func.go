@@ -20,5 +20,7 @@ func getinitials(n string) (string, string) {
 
 func main() {
 	fn, sn := getinitials("tifa lockhart")
+
 	println(fn, sn)
+	// Output: Ti L
 }
