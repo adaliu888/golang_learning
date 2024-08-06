@@ -3,6 +3,8 @@
 package main
 
 import (
+	"time"
+
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
@@ -16,30 +18,58 @@ import (
 	sugar.Infow("failed to fetch URL", "URL", "https://example.com", "attempt", 3, "backoff", 100*time.Millisecond)
 }*/
 
-func main() {
+func newcfg() {
 	cfg := zap.Config{
 		Level:    zap.NewAtomicLevelAt(zap.InfoLevel), // 设置日志级别
 		Encoding: "json",                              // 设置日志编码格式
 		EncoderConfig: zapcore.EncoderConfig{
-			MessageKey: "msg",    // 日志消息的键名
-			LevelKey:   "level",  // 日志级别的键名
-			TimeKey:    "ts",     // 时间戳的键名
-			NameKey:    "logger", // 日志名称的键名
+			MessageKey: "msg",                      // 日志消息的键名
+			LevelKey:   "level",                    // 日志级别的键名
+			TimeKey:    "ts",                       // 时间戳的键名
+			NameKey:    "logger",                   // 日志名称的键名
+			EncodeTime: zapcore.ISO8601TimeEncoder, // 时间编码器
 			// 更多配置...
 		},
-		// OutputPaths: []string{"stdout"},                  // 输出到标准输出（或其他路径）
-		// ErrorOutputPaths: []string{"stderr"},            // 错误输出路径
+		OutputPaths:      []string{"stdout"}, // 输出到标准输出（或其他路径）
+		ErrorOutputPaths: []string{"stderr"}, // 错误输出路径
 		// 更多配置...
 	}
 
 	logger, err := cfg.Build()
 	if err != nil {
+		panic(err)
+
 		// 处理错误
 	}
 	defer logger.Sync() // 确保所有日志都已写入
 
 	// 使用logger记录日志
 	logger.Info("Hello, Zap")
+}
+
+func main() {
+	newcfg()
+	cfg := zap.NewProductionConfig()
+
+	cfg.OutputPaths = []string{"stdout"}
+
+	logger, _ := cfg.Build()
+
+	logger.Info("Hello, zap!")
+
+	dcfg := zap.NewDevelopmentConfig()
+
+	dcfg.OutputPaths = []string{"stdout"}
+
+	dlogger, _ := dcfg.Build()
+
+	dlogger.Info("Hello, zap!")
+
+	log := zap.NewExample()
+
+	sugar := log.Sugar()
+
+	sugar.Infow("failed to fetch URL", "url", "https://example.com", "attempt", 3, "backoff", 100*time.Millisecond)
 }
 
 /*配置Encoder:

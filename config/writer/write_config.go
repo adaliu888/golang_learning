@@ -2,29 +2,25 @@ package main
 
 import (
 	"fmt"
+	"log"
 
 	"github.com/spf13/viper"
 )
 
 func main() {
-	viper.SetConfigName("config")
-	viper.SetConfigType("yaml")
-	viper.AddConfigPath("./conf")
+	// 设置配置文件的路径和名称
+	viper.SetConfigFile("./config.yaml")
 
-	viper.Set("yaml", "this is a example of yaml")
-
-	viper.Set("redis.port", 4405)
-	viper.Set("redis.host", "127.0.0.1")
-
-	viper.Set("mysql.port", 3306)
-	viper.Set("mysql.host", "192.168.1.0")
-	viper.Set("mysql.username", "root123")
-	viper.Set("mysql.password", "root123")
-
-	if err := viper.WriteConfig(); err != nil {
-		fmt.Println(err)
+	// 读取配置文件
+	if err := viper.ReadInConfig(); err != nil {
+		log.Fatalf("Error reading config file: %s", err)
 	}
 
-}
+	// 获取配置的值
+	appPort := viper.Get("app.port")
+	dbName := viper.Get("database.dbname")
 
-// config.yaml
+	// 使用配置信息
+	fmt.Printf("Application Port: %v\n", appPort)
+	fmt.Printf("Database Name: %v\n", dbName)
+}
