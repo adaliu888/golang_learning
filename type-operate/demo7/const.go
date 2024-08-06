@@ -2,17 +2,18 @@ package main
 
 import (
 	"fmt"
-	"unsafe"
-
+	"strings"
 )
 
 func main() {
+	//使用常量
 	const (
-		Months      = "Jan\0Feb\0Mar\0Apr"
+		Months      = `Jan\0Feb\0Mar\0Apr`
 		MonthsCount = 4
 	)
-	var monthSlice []string = make([]string, MonthsCount)
-	copy(monthSlice, []byte(Months))
+	//var monthSlice []string = make([]string, MonthsCount)
+	monthSlice := strings.Split(Months, `\0`)
+	//copy(monthSlice, []string(Months))
 
-	fmt.Println(monthSlice)
+	fmt.Printf("%+v\n", monthSlice) // Jan\0Feb\0Mar\0Apr\n(monthSlice)
 }
