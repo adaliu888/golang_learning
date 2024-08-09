@@ -11,7 +11,7 @@ var DBConnect *gorm.DB
 var err error
 
 func DBIint() *gorm.DB {
-	log.Println("connecting to database...")
+	log.Printf("connecting to database...")
 	// replace with your own database credentials
 
 	dsn := `root:test1234@tcp(127.0.0.1:3306)/test?charset=utf8mb4&parseTime=True&loc=Local`

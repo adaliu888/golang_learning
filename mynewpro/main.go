@@ -1,38 +1,41 @@
 package main
 
 import (
-	"io"
 	"mynewpro/db"
 	"mynewpro/middlewave"
 	"mynewpro/src"
-	"os"
 
 	"github.com/gin-gonic/gin"
 )
 
-func setlogger() {
+/*func setlogger() {
 	f, _ := os.Create("./gin.log")
 	gin.DefaultWriter = io.MultiWriter(f, os.Stdout)
 }
+*/
 
 func main() {
 
-	setlogger() //设置日志
+	//ZapLogger := middlewave.NewLogger()
+	//ZapLogger.Info("this is an info level log")
+	db.DBIint()
 	//启动数据库
-	go func() {
-		db.DBIint()
-	}()
+	lg := middlewave.InitLogger()
+	//setlogger()
 
-	router := gin.Default()                      //创建路由
+	router := gin.Default() //创建路由
+	//router.Use(middlewave.Logger())
+	router.Use(middlewave.GinLogger(lg), middlewave.GinRecovery(lg, true))
 	router.Use(middlewave.RateLimitMiddleware()) //访问限流
 	v1 := router.Group("/v1")                    //分组
 	src.AddUserRouter(*v1)
 
 	//v2 := router.Group("/v2")
 	//src.AddBlogRouter(*v2)
-	//router.Use(middlewave.ZapLogger())                                             //添加路由
-	router.Use(gin.BasicAuth(gin.Accounts{"admin": "admin"}), middlewave.Logger()) //中间件logger,需要登录才能访问
-
+	//router.Use(middlewave.ZapLogger()) //添加路由
+	//router.Use(gin.BasicAuth(gin.Accounts{"admin": "admin"}), middlewave.Logger())
+	//中间件logger,需要登录才能访问
+	router.Use(gin.BasicAuth(gin.Accounts{"admin": "admin"}), middlewave.Logger())
 	//启动数据库
 	go func() {
 		db.DBIint()
