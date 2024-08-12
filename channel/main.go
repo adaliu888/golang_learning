@@ -1,8 +1,8 @@
 package main
 
 import (
-	"ada/channel/third"
 	"fmt"
+	"golang_learning/channel/third"
 )
 
 // create new channel

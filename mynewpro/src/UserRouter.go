@@ -2,9 +2,8 @@ package src
 
 //集中管理路由
 import (
-	"mynewpro/service"
-
-	md "mynewpro/middlewave"
+	md "golang_learning/mynewpro/middlewave"
+	"golang_learning/mynewpro/service"
 
 	"github.com/gin-gonic/gin"
 )

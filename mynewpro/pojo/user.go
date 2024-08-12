@@ -1,7 +1,7 @@
 package pojo
 
 import (
-	"mynewpro/db"
+	"golang_learning/mynewpro/db"
 )
 
 type User struct {
