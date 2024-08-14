@@ -17,6 +17,7 @@ func newBill(name string) bill {
 		items: map[string]float64{},
 		tip:   0,
 	}
+	fmt.Println(b)
 	return b
 }
 
@@ -27,7 +28,7 @@ func (b bill) format() string {
 
 	//list item
 	for k, v := range b.items {
-		fmt.Sprintf("%v ...$%v", k+":", v)
+		fmt.Printf("%v ...$%v", k+":", v)
 		total += v
 	}
 	//total

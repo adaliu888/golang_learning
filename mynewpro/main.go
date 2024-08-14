@@ -1,9 +1,9 @@
 package main
 
 import (
-	"mynewpro/db"
-	"mynewpro/middlewave"
-	"mynewpro/src"
+	"golang_learning/mynewpro/db"
+	"golang_learning/mynewpro/middlewave"
+	"golang_learning/mynewpro/src"
 
 	"github.com/gin-gonic/gin"
 )
