@@ -2,9 +2,12 @@ package pojo
 
 import (
 	"golang_learning/mynewpro/db"
+
+	"gorm.io/gorm"
 )
 
 type User struct {
+	gorm.Model
 	Id       int    `json:"id" `
 	Username string `json:"username"`
 	Password string `json:"password"`

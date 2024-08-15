@@ -1,0 +1,32 @@
+package db
+
+import (
+	"context"
+	"testing"
+
+	"github.com/go-playground/assert/v2"
+)
+
+// 假设InitRedis函数如下：
+// func InitRedis() *redis.Client {
+//     // 初始化Redis逻辑
+// }
+
+func TestInitRedis(t *testing.T) {
+	// 调用InitRedis函数
+	client := InitRedis()
+
+	// 使用assert库来验证Redis客户端是否成功初始化
+	// 检查Ping方法是否返回nil，表示连接成功
+	assert.Equal(t, nil, client.Ping(context.Background()).Err())
+
+	// 如果需要测试更多Redis操作，可以继续使用assert来验证结果
+	// 例如，测试Set和Get操作
+	err := client.Set(context.Background(), "test_key", "test_value", 0).Err()
+	assert.Equal(t, nil, err)
+
+	// 获取之前设置的值
+	result, err := client.Get(context.Background(), "test_key").Result()
+	assert.Equal(t, nil, err)
+	assert.Equal(t, "test_value", result)
+}

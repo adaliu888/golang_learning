@@ -3,7 +3,7 @@ package main
 import (
 	"golang_learning/mynewpro/db"
 	"golang_learning/mynewpro/middlewave"
-	"golang_learning/mynewpro/src"
+	src "golang_learning/mynewpro/src_router"
 
 	"github.com/gin-gonic/gin"
 )

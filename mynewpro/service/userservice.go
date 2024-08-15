@@ -1,10 +1,11 @@
 package service
 
 import (
+	DB "golang_learning/mynewpro/db"
 	"golang_learning/mynewpro/middlewave"
 	"golang_learning/mynewpro/pojo"
-	"log"
 
+	"log"
 	"net/http"
 	"strconv"
 
@@ -102,13 +103,32 @@ func Login(c *gin.Context) {
 		c.JSON(http.StatusNotFound, "error")
 		return
 	}
+	//userId := strconv.Itoa(user.Id)
 	userId := strconv.Itoa(user.Id)
+
 	middlewave.SaveSession(c, userId)
+	//token, err := jwt.GenerateToken(userId)
+	//if err != nil {
+	//c.JSON(500, gin.H{"error": "failed to generate token"})
+	//return
+	//}
+	// 存储Token到Session
+	// 可以在这里设置Cookie或者使用其他方式存储Token
+	// 例如，使用SetCookie设置Token到Cookie
+	// c.SetCookie("auth_token", token, 3600, "/", "yourdomain.com", false, true)
+	//c.SetCookie("auth_token", token, 3600, "/", "127.0.0.1/8080", false, true)
 	c.JSON(http.StatusOK, gin.H{
 		"message": "login successfully",
 		"user":    user,
-		"session": middlewave.GetSession(c),
+		"session": middlewave.GetSession(c), //use session
+		//"token": token,
 	})
+	// 登录成功，重定向到目标页面
+	// 例如，重定向到用户的个人主页 "/user/profile"
+	c.Redirect(http.StatusFound, "/user/profile")
+
+	// 注意：使用c.Redirect后不需要再调用c.JSON或其他返回响应的方法
+
 }
 
 // logout user
@@ -158,3 +178,17 @@ func CheckUserSession(c *gin.Context) {
 	c.JSON(http.StatusNotFound, "error: user not updated")
 }
 */
+//redis user
+
+func RedisOneUser(c *gin.Context) {
+	id := c.Param("id")
+
+	if id == "0" {
+		c.JSON(http.StatusNotFound, "Error")
+		return
+	}
+	user := pojo.User{}
+	DB.DBConnect.Find(&user, id)
+	c.Set("dbResult", user)
+
+}
