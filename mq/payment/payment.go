@@ -36,6 +36,7 @@ func listen(ch *amqp.Channel) {
 	if err != nil {
 		log.Fatal(err)
 	}
+	//
 	msgs, err := ch.Consume(q.Name, "", false, false, false, false, nil)
 	if err != nil {
 		log.Fatal(err)

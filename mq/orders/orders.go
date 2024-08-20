@@ -19,13 +19,14 @@ var (
 )
 
 func main() {
-
+	//创建一个新的通道ch
 	ch, close := common.ConnectAmqp(user, pass, host, port)
 	defer func() {
 		close()
 		ch.Close()
 	}()
-
+	// 声明一个queue，声明时需要指定是否持久化，是否排他，是否自动删除，是否等待队列非空等参数。
+	// 若queueName不存在，RabbitMQ会创建一个新的queue。
 	q, err := ch.QueueDeclare(common.OrderCreatedEvent, true, false, false, false, nil)
 	if err != nil {
 		log.Fatal(err)
@@ -55,7 +56,8 @@ func main() {
 				Body:        marshaledorder,
 			})
 	*/
-
+	// Publish order to queue
+	// 若Publish函数返回error，那么err参数将包含该error。
 	err = ch.PublishWithContext(context.Background(), "",
 		q.Name, false, false, amqp.Publishing{
 			ContentType: "application/json",
