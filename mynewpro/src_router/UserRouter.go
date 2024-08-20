@@ -13,9 +13,9 @@ func AddUserRouter(r gin.RouterGroup) {
 	user := r.Group("/users", md.SetSession())
 
 	user.GET("/", service.FindAllUsers)
-	user.GET("/:id", service.FindByUserId)
+	//user.GET("/:id", service.FindByUserId)
 	user.GET("/:id", service.CacheOneUserDecorator(service.RedisOneUser, "id", "user_%s", pojo.User{}))
-	user.POST("/", service.PostUser)
+	user.POST("/register", service.PostUser)
 	//delete user
 	//user.DELETE("/:id", service.DeleteUser)
 	//update user
