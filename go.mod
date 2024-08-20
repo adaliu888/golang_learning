@@ -30,6 +30,8 @@ require (
 	github.com/go-redis/redis v6.15.9+incompatible // indirect
 	github.com/go-redis/redis/v8 v8.11.5 // indirect
 	github.com/pquerna/ffjson v0.0.0-20190930134022-aa0246cd15f7 // indirect
+	github.com/rabbitmq/amqp091-go v1.10.0 // indirect
+	github.com/streadway/amqp v1.1.0 // indirect
 )
 
 require (
