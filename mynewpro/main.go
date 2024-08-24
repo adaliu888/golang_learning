@@ -2,6 +2,7 @@ package main
 
 import (
 	"golang_learning/mynewpro/db"
+	"golang_learning/mynewpro/file"
 	"golang_learning/mynewpro/middlewave"
 	src "golang_learning/mynewpro/src_router"
 
@@ -18,14 +19,19 @@ func main() {
 
 	//ZapLogger := middlewave.NewLogger()
 	//ZapLogger.Info("this is an info level log")
-	db.DBIint()
+	//db.DBIint()
 	//启动数据库
-	lg := middlewave.InitLogger()
+
+	Log := middlewave.InitLogger(file.FN(), "info")
+	Log.Info(":info,server started")
+
 	//setlogger()
+	db.DBIint()
+	Log.Info("db initialized")
 
 	router := gin.Default() //创建路由
 	//router.Use(middlewave.Logger())
-	router.Use(middlewave.GinLogger(lg), middlewave.GinRecovery(lg, true))
+	//router.Use(middlewave.GinLogger(lg), middlewave.GinRecovery(lg, true))
 	router.Use(middlewave.RateLimitMiddleware()) //访问限流
 	v1 := router.Group("/v1")                    //分组
 	src.AddUserRouter(*v1)
@@ -57,4 +63,5 @@ func main() {
 		})*/
 
 	router.Run() // listen and serve on 0.0.0.0:8080
+
 }
