@@ -29,7 +29,6 @@ func AddUserRouter(r gin.RouterGroup) {
 
 	user.GET("/check", service.CheckUserSession)
 
-	//user.Use(md.AuthSession())
 	user.Use(md.AuthSession())
 	{
 		//delete user

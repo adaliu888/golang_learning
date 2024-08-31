@@ -1,0 +1,50 @@
+LOG: 2024/08/28 08:35:03 fn.go:26: 这是一条带日期的日志信息
+2024-08-28T08:35:03.979+0800	info	DefaultLogger init success
+2024-08-28T08:35:03.979+0800	info	:info,server started
+LOG: 2024/08/28 08:35:49 fn.go:26: 这是一条带日期的日志信息
+2024-08-28T08:35:49.079+0800	info	DefaultLogger init success
+2024-08-28T08:35:49.079+0800	info	:info,server started
+2024-08-28T08:35:49.112+0800	info	db initialized
+LOG: 2024/08/28 08:38:51 fn.go:26: 这是一条带日期的日志信息
+2024-08-28T08:38:51.651+0800	info	DefaultLogger init success
+2024-08-28T08:38:51.652+0800	info	:info,server started
+2024-08-28T08:38:51.654+0800	info	db initialized
+LOG: 2024/08/28 08:50:34 fn.go:26: 这是一条带日期的日志信息
+2024-08-28T08:50:34.930+0800	info	DefaultLogger init success
+2024-08-28T08:50:34.930+0800	info	:info,server started
+2024-08-28T08:50:34.943+0800	info	db initialized
+LOG: 2024/08/28 08:58:00 fn.go:26: 这是一条带日期的日志信息
+2024-08-28T08:58:00.753+0800	info	DefaultLogger init success
+2024-08-28T08:58:00.753+0800	info	:info,server started
+2024-08-28T08:58:00.766+0800	info	db initialized
+LOG: 2024/08/28 17:11:49 fn.go:26: 这是一条带日期的日志信息
+2024-08-28T17:11:49.796+0800	info	DefaultLogger init success
+2024-08-28T17:11:49.796+0800	info	:info,server started
+LOG: 2024/08/28 17:12:31 fn.go:26: 这是一条带日期的日志信息
+2024-08-28T17:12:31.605+0800	info	DefaultLogger init success
+2024-08-28T17:12:31.605+0800	info	:info,server started
+2024-08-28T17:12:31.620+0800	info	db initialized
+LOG: 2024/08/28 17:19:28 fn.go:26: 这是一条带日期的日志信息
+2024-08-28T17:19:28.648+0800	info	DefaultLogger init success
+2024-08-28T17:19:28.648+0800	info	:info,server started
+2024-08-28T17:19:28.651+0800	info	db initialized
+LOG: 2024/08/28 17:37:31 fn.go:26: 这是一条带日期的日志信息
+2024-08-28T17:37:31.918+0800	info	DefaultLogger init success
+2024-08-28T17:37:31.918+0800	info	:info,server started
+2024-08-28T17:37:31.921+0800	info	db initialized
+LOG: 2024/08/28 17:42:58 fn.go:26: 这是一条带日期的日志信息
+2024-08-28T17:42:58.081+0800	info	DefaultLogger init success
+2024-08-28T17:42:58.081+0800	info	:info,server started
+2024-08-28T17:42:58.085+0800	info	db initialized
+LOG: 2024/08/28 17:50:45 fn.go:26: 这是一条带日期的日志信息
+2024-08-28T17:50:45.742+0800	info	DefaultLogger init success
+2024-08-28T17:50:45.742+0800	info	:info,server started
+2024-08-28T17:50:45.746+0800	info	db initialized
+LOG: 2024/08/28 23:02:39 fn.go:26: 这是一条带日期的日志信息
+2024-08-28T23:02:39.723+0800	info	DefaultLogger init success
+2024-08-28T23:02:39.723+0800	info	:info,server started
+2024-08-28T23:02:39.732+0800	info	db initialized
+LOG: 2024/08/28 23:03:18 fn.go:26: 这是一条带日期的日志信息
+2024-08-28T23:03:18.183+0800	info	DefaultLogger init success
+2024-08-28T23:03:18.184+0800	info	:info,server started
+2024-08-28T23:03:18.188+0800	info	db initialized

@@ -112,7 +112,7 @@ func Login(c *gin.Context) {
 	//c.JSON(500, gin.H{"error": "failed to generate token"})
 	//return
 	//}
-	// 存储Token到Session
+	// 存储Token到cookies
 	// 可以在这里设置Cookie或者使用其他方式存储Token
 	// 例如，使用SetCookie设置Token到Cookie
 	// c.SetCookie("auth_token", token, 3600, "/", "yourdomain.com", false, true)
@@ -125,7 +125,7 @@ func Login(c *gin.Context) {
 	})
 	// 登录成功，重定向到目标页面
 	// 例如，重定向到用户的个人主页 "/user/profile"
-	c.Redirect(http.StatusFound, "/user/profile")
+	//c.Redirect(http.StatusFound, "/user/profile")
 
 	// 注意：使用c.Redirect后不需要再调用c.JSON或其他返回响应的方法
 
@@ -136,6 +136,7 @@ func Logout(c *gin.Context) {
 	middlewave.ClearSession(c)
 	c.JSON(http.StatusOK, gin.H{
 		"message": "logout successfully",
+
 		"session": middlewave.GetSession(c),
 	})
 
@@ -182,7 +183,6 @@ func CheckUserSession(c *gin.Context) {
 
 func RedisOneUser(c *gin.Context) {
 	id := c.Param("id")
-
 	if id == "0" {
 		c.JSON(http.StatusNotFound, "Error")
 		return

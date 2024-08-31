@@ -7,6 +7,8 @@ import (
 	src "golang_learning/mynewpro/src_router"
 
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 /*func setlogger() {
@@ -27,11 +29,17 @@ func main() {
 
 	//setlogger()
 	db.DBIint()
+	db.InitRedis()
 	Log.Info("db initialized")
 
 	router := gin.Default() //创建路由
+
+	//add swagger
+	router.GET("/docs/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
+
 	//router.Use(middlewave.Logger())
 	//router.Use(middlewave.GinLogger(lg), middlewave.GinRecovery(lg, true))
+
 	router.Use(middlewave.RateLimitMiddleware()) //访问限流
 	v1 := router.Group("/v1")                    //分组
 	src.AddUserRouter(*v1)
