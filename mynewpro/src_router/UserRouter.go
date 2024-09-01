@@ -1,4 +1,4 @@
-package src
+package src_router
 
 //集中管理路由
 import (

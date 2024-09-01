@@ -1,0 +1,7 @@
+LOG: 2024/09/01 18:28:31 fn.go:26: 这是一条带日期的日志信息
+2024-09-01T18:28:31.596+0800	info	DefaultLogger init success
+2024-09-01T18:28:31.596+0800	info	:info,server started
+LOG: 2024/09/01 18:30:07 fn.go:26: 这是一条带日期的日志信息
+2024-09-01T18:30:07.072+0800	info	DefaultLogger init success
+2024-09-01T18:30:07.072+0800	info	:info,server started
+2024-09-01T18:30:07.093+0800	info	db initialized

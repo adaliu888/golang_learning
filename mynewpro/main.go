@@ -44,6 +44,9 @@ func main() {
 	v1 := router.Group("/v1")                    //分组
 	src.AddUserRouter(*v1)
 
+	v2 := router.Group("/v2") //
+	src.AddBlogRouter(*v2)
+
 	//v2 := router.Group("/v2")
 	//src.AddBlogRouter(*v2)
 	//router.Use(middlewave.ZapLogger()) //添加路由
