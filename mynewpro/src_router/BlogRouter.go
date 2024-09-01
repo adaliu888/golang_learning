@@ -11,7 +11,7 @@ func AddBlogRouter(r gin.RouterGroup) {
 	blog := r.Group("/blogs")
 	blog.GET("/", service.FindAllBlogs)
 	blog.GET("/:id", service.FindByBlogId)
-	blog.POST("/register", service.AddBlog)
+	blog.POST("/addblogs", service.AddBlog)
 	blog.DELETE("/:id", service.DeleteBlog)
 	/* blog.GET("/:id/comments", FindBlogComments)
 	   blog.POST("/:id/comments", CreateBlogComment)
