@@ -1,4 +1,4 @@
-package main
+package heap
 
 import (
 	"container/heap"
@@ -25,7 +25,7 @@ func (h *IntHeap) Pop() interface{} {
 	return x
 }
 
-func main() {
+func Head() {
 	h := &IntHeap{2, 1, 5, 3, 4}
 	heap.Init(h)
 	heap.Push(h, 6)

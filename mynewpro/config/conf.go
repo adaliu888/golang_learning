@@ -32,10 +32,11 @@ func ConfigYaml() {
 		panic(err)
 	}
 
-	//打印文件读取出来的内容:
-	fmt.Println(config.Get("database.host"))
-	fmt.Println(config.Get("database.user"))
-	fmt.Println(config.Get("database.dbname"))
-	fmt.Println(config.Get("database.pwd"))
-
+	// 读取yaml中的数据
+	db := Database{}
+	err = config.Unmarshal(&db)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Database Config: ", db)
 }

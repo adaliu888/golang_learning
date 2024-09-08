@@ -1,4 +1,4 @@
-package main
+package cmds
 
 import (
 	"fmt"
@@ -15,7 +15,7 @@ var cmds = map[any]func(map[any]any) any{
 	// 可以添加更多的命令和它们对应的函数
 }
 
-func main() {
+func Cmds() {
 	// 调用 "add" 命令
 	args := map[any]any{
 		"a": 5,

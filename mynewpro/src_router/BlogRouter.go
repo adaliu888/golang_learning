@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// 创建一个blog 群路由
 func AddBlogRouter(r gin.RouterGroup) {
 	blog := r.Group("/blogs")
 	blog.GET("/", service.FindAllBlogs)
