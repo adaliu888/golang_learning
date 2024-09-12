@@ -1,4 +1,4 @@
-package main
+package chanopt
 
 import (
 	"fmt"
@@ -12,7 +12,7 @@ func doWork() int {
 	return rand.Intn(100)
 }
 
-func main() {
+func ChanOpt() {
 	datachan := make(chan int) //make a channel ,but buffer does not infered
 
 	go func() {

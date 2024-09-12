@@ -6,14 +6,14 @@ WaitGroup 对象内部有一个计数器，最初从0开始，它有三个方法
 使用WaitGroup 将上述代码可以修改为：
 */
 
-package main
+package todosync
 
 import (
 	"fmt"
 	"sync"
 )
 
-func main() {
+func ToDoSync() {
 	var wg sync.WaitGroup
 	ch := make(chan int, 100)
 	wg.Add(100)

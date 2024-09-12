@@ -1,4 +1,4 @@
-package third
+package sqrt
 
 import (
 	"fmt"
@@ -10,6 +10,6 @@ func Sqrt(x float64) float64 {
 		z -= (z*z - x) / (2 * z)
 		fmt.Println(z)
 	}
-	return z
-
+	return float64(z)
+	// 注意：在 Go 语言中，sqrt 并没有内置的函数，需要用循环来实现
 }

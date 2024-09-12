@@ -1,4 +1,4 @@
-package main
+package pathfull
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
-func main() {
+func PathFull() {
 	// 使用相对路径
 	relativePath := "config/config.yaml"
 	// 使用 filepath 包来确保路径在 Windows 下正确
@@ -18,9 +18,7 @@ func main() {
 
 	// 使用绝对路径
 	absolutePath := filepath.Join(
-		"E:",
-		`\GitHub\golang_learning\src\golang_learning\`,
-		"config",
+		`E:\GitHub\golang\src\golang_learning\config`,
 		"config.yaml",
 	)
 	fmt.Println("Absolute path:", absolutePath)

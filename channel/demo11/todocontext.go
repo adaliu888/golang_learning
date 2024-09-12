@@ -1,4 +1,4 @@
-package main
+package todocontext
 
 import (
 	"context"
@@ -8,7 +8,7 @@ import (
 
 //使用context.WithCancel，withtimeout 去取消channel，不会造成死锁；或者超时去取消channel，不会造成死锁
 
-func main() {
+func ToDoContext() {
 
 	basectx := context.Background()
 	ctx, cancel := context.WithCancel(basectx)

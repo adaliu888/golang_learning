@@ -1,4 +1,4 @@
-package main
+package nbuff
 
 import (
 	"fmt"
@@ -6,7 +6,7 @@ import (
 
 //create a new channel instance with no buffering
 
-func main() {
+func NBuff() {
 	ch := make(chan int)
 
 	go func() {

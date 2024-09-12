@@ -1,11 +1,11 @@
-package main
+package operaterset
 
 import (
 	"fmt"
 	"reflect"
 )
 
-func main() {
+func OperaterSet() {
 	//创建一个fruits map
 	var fruits map[string]int
 	fruits = make(map[string]int)

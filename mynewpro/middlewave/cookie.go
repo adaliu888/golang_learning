@@ -45,12 +45,14 @@ func ClearSession(c *gin.Context) {
 	session.Save()
 }
 
+// get session
 func GetSession(c *gin.Context) string {
 	session := sessions.Default(c)
 	sessionID := session.Get(secretKey)
 	return sessionID.(string)
 }
 
+// check session
 func ChectSession(c *gin.Context) bool {
 	session := sessions.Default(c)
 	sessionID := session.Get(secretKey)

@@ -1,10 +1,10 @@
-package main
+package demo7
 
 import (
 	"fmt"
 )
 
-func main() {
+func TDChannel() {
 	ch1 := make(chan int)            //type is int
 	ch2 := make(chan float32)        //type is float32
 	ch3 := make(chan string)         //type is string

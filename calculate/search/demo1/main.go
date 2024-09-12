@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-func main() {
+func OperaterStr() {
 	var str string = "hello world, golang,my name is ada"
 	var substr string = "hello world, golang,my name is ada"
 

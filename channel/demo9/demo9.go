@@ -1,9 +1,9 @@
 // 通过range 遍历 channel
-package main
+package demo9
 
 import "fmt"
 
-func main() {
+func ToDochannel() {
 	ch := make(chan int, 3)
 
 	go func() {

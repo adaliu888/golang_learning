@@ -1,12 +1,12 @@
-package main
+package todp
 
 import (
 	"fmt"
-	"golang_learning/channel/third"
+	third "golang_learning/channel/third"
 )
 
 // create new channel
-func main() {
+func GoThird() {
 	const s int = 5
 	var a int = 0
 	ch := make(chan int) //make a channel,deflaut not input the number of channel

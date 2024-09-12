@@ -15,7 +15,7 @@
 //          log.Println("任务在 5 秒内被执行")
 //      }
 
-package main
+package demo12
 
 import (
 	"context"
@@ -23,7 +23,7 @@ import (
 	"time"
 )
 
-func main() {
+func demo12() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second*2)
 	defer cancel()
 

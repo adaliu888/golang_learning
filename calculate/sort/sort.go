@@ -1,4 +1,4 @@
-package main
+package sort
 
 import (
 	"fmt"
@@ -21,7 +21,7 @@ func (s MyIntSlice) Less(i, j int) bool {
 func (s MyIntSlice) Swap(i, j int) {
 	s[i], s[j] = s[j], s[i]
 }
-func main() {
+func SortOpt() {
 
 	var a = []int{2, 3, 1, 5, 4}
 	//对整数切片排序
