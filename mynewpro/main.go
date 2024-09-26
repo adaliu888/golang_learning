@@ -55,21 +55,6 @@ func main() {
 		db.DBIint()
 	}()
 
-	/*
-		r.GET("/ping", func(c *gin.Context) { //get ping message
-			c.JSON(200, gin.H{
-				"message": "ping",
-				"version": "1.0.0",
-			})
-		})
-		r.POST("/ping/:id", func(c *gin.Context) { //post ping message
-			id := c.Param("id")
-			c.JSON(200, gin.H{
-				"id": id,
-			})
-
-		})*/
-
 	router.Run() // listen and serve on 0.0.0.0:8080
 
 }

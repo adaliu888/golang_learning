@@ -1,10 +1,10 @@
-package main
+package dmch
 
 import (
 	"fmt"
 )
 
-func main() {
+func DmChannel() {
 	ch1 := make(chan int)
 	ch2 := make(chan int)
 	// 2 个 goroutine 交替执行 select 语句 channel send 和 channel recv

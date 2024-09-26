@@ -9,9 +9,12 @@ import (
 )
 
 func BenchmarkTodoSync(b *testing.B) {
-	for i := 0; i < b.N; i++ {
-		sc.ToDoSync()
-	}
+	b.Run("empty", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			sc.ToDoSync()
+		}
+		b.ReportAllocs()
+	})
 }
 
 func TestTodoSync(t *testing.T) {

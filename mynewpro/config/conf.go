@@ -1,4 +1,4 @@
-package config
+package conf
 
 import (
 	"fmt"
@@ -33,10 +33,11 @@ func ConfigYaml() {
 	}
 
 	// 读取yaml中的数据
-	db := Database{}
+	var db Database
+
 	err = config.Unmarshal(&db)
 	if err != nil {
 		panic(err)
 	}
-	fmt.Println("Database Config: ", db)
+	fmt.Println("Database Config: ", db.dbname, db.host, db.pwd, db.user)
 }

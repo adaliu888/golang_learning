@@ -1,19 +1,23 @@
-package config
+package conf_test
 
 import (
 	"fmt"
 	"log"
 	"os"
+	"path/filepath"
+	"testing"
 
 	"github.com/spf13/viper"
 )
 
-func main() {
+func TestConfigYaml(t *testing.T) {
 	// 获取项目的执行路径
 	path, err := os.Getwd()
 	if err != nil {
-		log.Fatal(err)
+		t.Fatal(err)
 	}
+
+	path = filepath.Join(path, "config.yaml")
 
 	// 设置配置文件的路径和名称
 	viper.SetConfigName("config")

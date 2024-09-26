@@ -5,7 +5,7 @@ import (
 	"fmt"
 )
 
-// Product _
+// Product _ use tag for product information
 type Product struct {
 	Name      string  `json:"name"`
 	ProductID int64   `json:"product_id,string"`
