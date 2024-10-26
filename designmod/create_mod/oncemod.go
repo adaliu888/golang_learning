@@ -1,4 +1,4 @@
-package main
+package create_mod
 
 //单例模式（Singleton Pattern）确保一个类只有一个实例，并提供一个全局访问点。单例模式通常用于管理共享资源，如数据库连接、配置文件、日志记录等
 /*
@@ -30,7 +30,7 @@ func GetInstance() *Singleton {
 	return instance
 }
 
-func main() {
+func OnceMod() {
 	s1 := GetInstance()
 	s2 := GetInstance()
 

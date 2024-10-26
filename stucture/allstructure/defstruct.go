@@ -5,9 +5,9 @@ import "fmt"
 //define struct
 
 type Person struct {
-	Name    string `json:"name"`
-	Age     int    `json:"age"`
-	Address string `json:"address"`
+	Name    string
+	Age     int
+	Address string
 }
 
 //结构体方法
