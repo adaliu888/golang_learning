@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+// goto program for
 func main() {
 	i := 0
 Loop:
