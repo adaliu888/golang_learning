@@ -6,7 +6,7 @@ import (
 
 func main() {
 	str := "Hello, 世界"
-	runes := []rune(str)
+	runes := []rune(str) //print char though using rune conversion
 	for i, r := range runes {
 		fmt.Printf("Position %d: %c\n", i, r)
 	}
