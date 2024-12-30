@@ -45,4 +45,5 @@ func OnceMod() {
 // doSomething 是单例可以执行的方法
 func (s *Singleton) doSomething() {
 	fmt.Println("Singleton is working...")
+	fmt.Println("This is a temp")
 }
