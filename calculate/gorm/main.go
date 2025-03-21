@@ -16,13 +16,16 @@ type User struct {
 
 func main() {
 	// 连接到 SQLite 数据库
-	db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open("go-test.db"), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// 迁移模式
-	db.AutoMigrate(&User{})
+	// 检查表是否存在
+	if !db.Migrator().HasTable(&User{}) {
+		// 如果表不存在，则迁移模式
+		db.AutoMigrate(&User{})
+	}
 
 	// 创建记录
 	user := User{Name: "Alice", Age: 30}
