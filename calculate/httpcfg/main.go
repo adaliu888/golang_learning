@@ -3,7 +3,8 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"os"
+	"path/filepath"
 )
 
 type HttpClientConfig struct {
@@ -20,10 +21,23 @@ type HttpClientConfig struct {
 
 func main() {
 	// 假设我们有一个名为 config.json 的配置文件
-	configFile := "config.json"
+	configFile := filepath.Join(".", "config.json")
+
+	// 打印当前工作目录
+	currentDir, err := os.Getwd()
+	if err != nil {
+		panic(err)
+	}
+	fmt.Println("Current working directory:", currentDir)
+
+	// 检查配置文件是否存在
+	if _, err := os.Stat(configFile); os.IsNotExist(err) {
+		fmt.Printf("Config file does not exist: %s\n", configFile)
+		return
+	}
 
 	// 读取配置文件
-	fileContent, err := ioutil.ReadFile(configFile)
+	fileContent, err := os.ReadFile(configFile)
 	if err != nil {
 		panic(err)
 	}

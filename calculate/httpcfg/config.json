@@ -1,0 +1,10 @@
+{
+    "enable": true,
+    "enable_autotest": false,
+    "enable_debug": true,
+    "name": "MyHttpClient",
+    "tag": "v1.0",
+    "url": "http://example.com",
+    "connect-read-timeout": 30,
+    "do-timeinterval": 10
+}
