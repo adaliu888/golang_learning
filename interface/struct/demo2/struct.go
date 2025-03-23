@@ -23,7 +23,7 @@ func (o *Driver) Constructor() {
 type Person struct {
 	Next *Person
 }
-
+//func (o *Person) Constructor(next *Person) { ... }：这是一个方法的定义，名为 Constructor。它是 Person 结构体的一个方法，接收一个指向 Person 类型的指针 next 作为参数。
 func (o *Person) Constructor(next *Person) {
 	o.Next = next
 }

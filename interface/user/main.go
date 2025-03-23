@@ -35,6 +35,7 @@ func getUsersHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+
 	r := mux.NewRouter()
 
 	// 定义路由，使用mux的路径变量功能
@@ -43,3 +44,13 @@ func main() {
 	// 启动HTTP服务器
 	http.ListenAndServe(":8080", r)
 }
+
+/*
+代码说明
+mux 包：
+mux 是 Go 语言中一个流行的路由器库，通常用于处理 HTTP 请求的路由。它允许你定义 URL 路径与处理函数之间的映射关系。
+NewRouter 方法：
+mux.NewRouter() 是 mux 包中的一个函数，用于创建一个新的路由器实例。这个路由器将用于定义和管理 HTTP 路由。
+变量 r：
+r := 是 Go 语言中的短变量声明语法，表示声明一个变量 r 并初始化为 mux.NewRouter() 的返回值。r 将是一个路由器对象，后续可以使用这个对象来定义路由规则。
+*/
