@@ -1,0 +1,189 @@
+# config.yaml - 多数据库分布式配置
+
+# 应用全局配置
+app:
+  name: "分布式数据服务"
+  environment: "production"  # development, testing, production
+  log_level: "info"         # debug, info, warn, error
+  api_port: 8080
+
+# 数据库连接配置
+databases:
+  # PostgreSQL 主节点
+  postgres_master:
+    driver: "postgres"
+    host: "10.0.1.100"
+    port: 5432
+    user: "postgres_master"
+    password: "master_secure_pwd"
+    dbname: "app_main"
+    sslmode: "require"
+    max_open_conns: 50
+    max_idle_conns: 15
+    conn_max_lifetime: "15m"
+    conn_max_idle_time: "5m"
+    
+  # PostgreSQL 只读副本节点
+  postgres_replica_1:
+    driver: "postgres"
+    host: "10.0.1.101"
+    port: 5432
+    user: "postgres_replica"
+    password: "replica_secure_pwd"
+    dbname: "app_main"
+    sslmode: "require"
+    max_open_conns: 100
+    max_idle_conns: 25
+    conn_max_lifetime: "15m"
+    conn_max_idle_time: "5m"
+    
+  postgres_replica_2:
+    driver: "postgres"
+    host: "10.0.1.102"
+    port: 5432
+    user: "postgres_replica"
+    password: "replica_secure_pwd"
+    dbname: "app_main"
+    sslmode: "require"
+    max_open_conns: 100
+    max_idle_conns: 25
+    conn_max_lifetime: "15m"
+    conn_max_idle_time: "5m"
+    
+  # MySQL 主节点
+  mysql_master:
+    driver: "mysql"
+    host: "10.0.2.100"
+    port: 3306
+    user: "mysql_master"
+    password: "mysql_master_pwd"
+    dbname: "app_analytics"
+    params: "parseTime=true&charset=utf8mb4&collation=utf8mb4_unicode_ci"
+    max_open_conns: 50
+    max_idle_conns: 15
+    conn_max_lifetime: "15m"
+    conn_max_idle_time: "5m"
+    
+  # MySQL 只读副本节点
+  mysql_replica_1:
+    driver: "mysql"
+    host: "10.0.2.101"
+    port: 3306
+    user: "mysql_replica"
+    password: "mysql_replica_pwd"
+    dbname: "app_analytics"
+    params: "parseTime=true&charset=utf8mb4&collation=utf8mb4_unicode_ci"
+    max_open_conns: 100
+    max_idle_conns: 25
+    conn_max_lifetime: "15m"
+    conn_max_idle_time: "5m"
+    
+  # MongoDB 集群
+  mongodb_primary:
+    driver: "mongodb"
+    uri: "mongodb://mongo_user:mongo_pwd@10.0.3.100:27017,10.0.3.101:27017,10.0.3.102:27017/app_documents?replicaSet=rs0&authSource=admin"
+    dbname: "app_documents"
+    max_pool_size: 100
+    min_pool_size: 20
+    max_idle_time_ms: 300000
+    
+  # Redis 集群
+  redis_master:
+    driver: "redis"
+    host: "10.0.4.100"
+    port: 6379
+    password: "redis_secure_pwd"
+    db: 0
+    pool_size: 100
+    min_idle_conns: 10
+    max_conn_age: "30m"
+    
+  redis_replicas:
+    driver: "redis"
+    addresses:
+      - "10.0.4.101:6379"
+      - "10.0.4.102:6379"
+      - "10.0.4.103:6379"
+    password: "redis_secure_pwd"
+    db: 0
+    read_only: true
+    pool_size: 200
+    min_idle_conns: 20
+    max_conn_age: "30m"
+    
+  # SQLite (用于本地缓存或配置)
+  sqlite_local:
+    driver: "sqlite3"
+    path: "/app/data/local_cache.db"
+    pragma:
+      journal_mode: "WAL"
+      synchronous: "NORMAL"
+      cache_size: 5000
+      foreign_keys: "on"
+    
+# 分片配置
+sharding:
+  enabled: true
+  shards:
+    # 用户数据分片
+    user_shard_1:
+      driver: "postgres"
+      host: "10.0.5.100"
+      port: 5432
+      user: "shard_user"
+      password: "shard_pwd"
+      dbname: "user_shard_1"
+      sslmode: "require"
+      max_open_conns: 50
+      max_idle_conns: 15
+      id_range: "0-999999"
+      
+    user_shard_2:
+      driver: "postgres"
+      host: "10.0.5.101"
+      port: 5432
+      user: "shard_user"
+      password: "shard_pwd"
+      dbname: "user_shard_2"
+      sslmode: "require"
+      max_open_conns: 50
+      max_idle_conns: 15
+      id_range: "1000000-1999999"
+      
+    user_shard_3:
+      driver: "postgres"
+      host: "10.0.5.102"
+      port: 5432
+      user: "shard_user"
+      password: "shard_pwd"
+      dbname: "user_shard_3"
+      sslmode: "require"
+      max_open_conns: 50
+      max_idle_conns: 15
+      id_range: "2000000-2999999"
+
+# 连接池管理器配置
+connection_manager:
+  health_check_interval: "30s"
+  retry_interval: "5s"
+  max_retries: 5
+  circuit_breaker:
+    enabled: true
+    threshold: 5
+    timeout: "1m"
+
+# 数据库故障转移配置
+failover:
+  enabled: true
+  auto_switch: true
+  heartbeat_interval: "5s"
+  max_failures_before_switch: 3
+
+# 监控和指标配置
+monitoring:
+  enabled: true
+  prometheus_endpoint: "/metrics"
+  collect_query_stats: true
+  slow_query_threshold: "500ms"
+  log_queries: false
+  log_slow_queries: true

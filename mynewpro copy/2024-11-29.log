@@ -1,0 +1,4 @@
+LOG: 2024/11/29 10:31:34 fn.go:26: 这是一条带日期的日志信息
+2024-11-29T10:31:34.925+0800	info	DefaultLogger init success
+2024-11-29T10:31:34.925+0800	info	:info,server started
+2024-11-29T10:31:34.929+0800	info	db initialized

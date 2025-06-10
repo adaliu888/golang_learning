@@ -1,0 +1,4 @@
+time="2025-03-24T16:26:04+08:00" level=fatal msg="Failed to connect to database:unsupported database type: "
+time="2025-03-24T19:17:58+08:00" level=fatal msg="Failed to connect to Redis:dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."
+time="2025-03-24T19:19:09+08:00" level=fatal msg="Failed to connect to Redis:dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."
+time="2025-03-24T19:24:39+08:00" level=fatal msg="Failed to connect to Redis:dial tcp [::1]:6379: connectex: No connection could be made because the target machine actively refused it."

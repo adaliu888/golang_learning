@@ -1,0 +1,109 @@
+{
+	"Name": "apiHandler",
+	"SpanContext": {
+		"TraceID": "9a4bdb214178636e8b4cbad7efa6d568",
+		"SpanID": "971b95a9b84cc9d9",
+		"TraceFlags": "01",
+		"TraceState": "",
+		"Remote": false
+	},
+	"Parent": {
+		"TraceID": "00000000000000000000000000000000",
+		"SpanID": "0000000000000000",
+		"TraceFlags": "00",
+		"TraceState": "",
+		"Remote": false
+	},
+	"SpanKind": 1,
+	"StartTime": "0001-01-01T00:00:00Z",
+	"EndTime": "0001-01-01T00:00:00Z",
+	"Attributes": [
+		{
+			"Key": "http.method",
+			"Value": {
+				"Type": "STRING",
+				"Value": "GET"
+			}
+		},
+		{
+			"Key": "http.url",
+			"Value": {
+				"Type": "STRING",
+				"Value": "/api"
+			}
+		},
+		{
+			"Key": "http.client_ip",
+			"Value": {
+				"Type": "STRING",
+				"Value": "[::1]:61202"
+			}
+		},
+		{
+			"Key": "http.status",
+			"Value": {
+				"Type": "STRING",
+				"Value": "200"
+			}
+		}
+	],
+	"Events": [
+		{
+			"Name": "Processing API request",
+			"Attributes": null,
+			"DroppedAttributeCount": 0,
+			"Time": "0001-01-01T00:00:00Z"
+		}
+	],
+	"Links": null,
+	"Status": {
+		"Code": "Unset",
+		"Description": ""
+	},
+	"DroppedAttributes": 0,
+	"DroppedEvents": 0,
+	"DroppedLinks": 0,
+	"ChildSpanCount": 0,
+	"Resource": [
+		{
+			"Key": "service.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "unknown_service:main.exe"
+			}
+		},
+		{
+			"Key": "telemetry.sdk.language",
+			"Value": {
+				"Type": "STRING",
+				"Value": "go"
+			}
+		},
+		{
+			"Key": "telemetry.sdk.name",
+			"Value": {
+				"Type": "STRING",
+				"Value": "opentelemetry"
+			}
+		},
+		{
+			"Key": "telemetry.sdk.version",
+			"Value": {
+				"Type": "STRING",
+				"Value": "1.35.0"
+			}
+		}
+	],
+	"InstrumentationScope": {
+		"Name": "example.com/api",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	},
+	"InstrumentationLibrary": {
+		"Name": "example.com/api",
+		"Version": "",
+		"SchemaURL": "",
+		"Attributes": null
+	}
+}

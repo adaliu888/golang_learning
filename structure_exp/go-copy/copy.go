@@ -1,5 +1,4 @@
-package copy
-
+package variable
 import (
 	"fmt"
 )

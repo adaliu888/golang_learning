@@ -1,0 +1,10 @@
+{"level":"info","msg":"Logger initialized successfully","time":"2025-03-24T22:26:59+08:00"}
+{"level":"info","msg":"Tracer initialized successfully","time":"2025-03-24T22:26:59+08:00"}
+{"level":"info","msg":"Starting server on :8080...","time":"2025-03-24T22:26:59+08:00"}
+{"ip":"[::1]:61030","level":"info","method":"GET","msg":"Received API request","time":"2025-03-24T22:30:24+08:00","url":"/api"}
+{"level":"info","method":"GET","msg":"API request processed successfully","status":"200","time":"2025-03-24T22:30:25+08:00","url":"/api"}
+{"level":"info","msg":"Logger initialized successfully","time":"2025-03-24T22:53:13+08:00"}
+{"level":"info","msg":"Tracer initialized successfully","time":"2025-03-24T22:53:13+08:00"}
+{"level":"info","msg":"Starting server on :8080...","time":"2025-03-24T22:53:13+08:00"}
+{"ip":"[::1]:61202","level":"info","method":"GET","msg":"Received API request","time":"2025-03-24T22:53:32+08:00","url":"/api"}
+{"level":"info","method":"GET","msg":"API request processed successfully","status":"200","time":"2025-03-24T22:53:33+08:00","url":"/api"}

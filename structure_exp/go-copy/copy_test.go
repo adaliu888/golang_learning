@@ -1,12 +1,11 @@
-package copy_test
+package variable
 
 import (
-	vv "golang_learning/stucture/variable"
 	"testing"
 )
 
 func TestQCopy(t *testing.T) {
-	vv.QCopy()
-	vv.QCopy2()
+	QCopy()
+	QCopy2()
 	t.Log("All tests passed")
 }

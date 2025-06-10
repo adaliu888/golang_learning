@@ -7,8 +7,6 @@ import (
 	"golang_learning/mynewpro/middlewave"
 	src "golang_learning/mynewpro/src_router"
 
-	"os"
-
 	"github.com/gin-gonic/gin"
 )
 
@@ -68,11 +66,6 @@ func main() {
 	{
 		// 管理员路由...
 	}
-	//router.Run(),避免"PORT undefined"警告
-	// 从环境变量获取端口，如果未设置则使用8088
-	port := os.Getenv("PORT")
-	if port == "" {
-		port = "8088"
-	}
-	router.Run(":" + port) // 使用指定端口启动服务
+
+	router.Run() // listen and serve on 0.0.0.0:8080
 }
