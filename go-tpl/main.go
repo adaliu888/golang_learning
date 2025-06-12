@@ -20,18 +20,46 @@ func main() {
         log.Fatal("数据库连接失败:", err)
     }
     
+    // 删除旧表（如果存在）
+    _, err = database.DB.Exec(`DROP TABLE IF EXISTS users`)
+    if err != nil {
+        log.Fatal("删除旧表失败:", err)
+    }
+    
+    _, err = database.DB.Exec(`DROP TABLE IF EXISTS blogs`)
+    if err != nil {
+        log.Fatal("删除博客表失败:", err)
+    }
+    
     // 创建用户表
     _, err = database.DB.Exec(`
         CREATE TABLE IF NOT EXISTS users (
             id INT AUTO_INCREMENT PRIMARY KEY,
-            name VARCHAR(100) NOT NULL,
-            email VARCHAR(100) NOT NULL,
-            phone VARCHAR(20) NOT NULL,
+            username VARCHAR(50) NOT NULL UNIQUE,
+            password VARCHAR(100) NOT NULL,
+            name VARCHAR(100),
+            email VARCHAR(100),
+            phone VARCHAR(20),
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     `)
     if err != nil {
         log.Fatal("创建用户表失败:", err)
+    }
+
+    // 创建博客表
+    _, err = database.DB.Exec(`
+        CREATE TABLE IF NOT EXISTS blogs (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            title VARCHAR(200) NOT NULL,
+            content TEXT NOT NULL,
+            summary VARCHAR(500),
+            author VARCHAR(100) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    `)
+    if err != nil {
+        log.Fatal("创建博客表失败:", err)
     }
     
     // 设置静态文件服务
@@ -39,6 +67,9 @@ func main() {
     http.Handle("/static/", http.StripPrefix("/static/", fs))
     
     // 设置路由
+    http.HandleFunc("/", handlers.HomeHandler)  // 将首页设为首页
+    http.HandleFunc("/login", handlers.LoginHandler)
+    http.HandleFunc("/register", handlers.RegisterHandler)
     http.HandleFunc("/user", handlers.UserFormHandler)
     
     // 创建服务器

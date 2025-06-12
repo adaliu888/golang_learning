@@ -16,15 +16,26 @@ type PageData struct {
 }
 
 func UserFormHandler(w http.ResponseWriter, r *http.Request) {
+    tmpl := template.Must(template.ParseFiles(
+        filepath.Join("templates", "layout.html"),
+        filepath.Join("templates", "user_form.html"),
+    ))
+
     if r.Method == "GET" {
-        tmpl := template.Must(template.ParseFiles(
-            filepath.Join("templates", "layout.html"),
-            filepath.Join("templates", "user_form.html"),
-        ))
-        
+        // 从 session 或 cookie 中获取用户名
+        // 这里暂时使用一个固定的用户名进行测试
+        username := "test_user" // 实际应用中应该从 session 获取
+
+        user := &models.User{Username: username}
+        err := user.GetByUsername(username)
+        if err != nil {
+            // 如果用户不存在，创建一个新的用户对象
+            user = &models.User{Username: username}
+        }
+
         data := PageData{
             Title: "用户信息提交",
-            User:  &models.User{},
+            User:  user,
         }
         
         tmpl.Execute(w, data)
@@ -32,22 +43,22 @@ func UserFormHandler(w http.ResponseWriter, r *http.Request) {
     }
     
     if r.Method == "POST" {
+        // 从 session 或 cookie 中获取用户名
+        // 这里暂时使用一个固定的用户名进行测试
+        username := "test_user" // 实际应用中应该从 session 获取
+
         user := &models.User{
-            Name:  r.FormValue("name"),
-            Email: r.FormValue("email"),
-            Phone: r.FormValue("phone"),
+            Username: username,
+            Name:     r.FormValue("name"),
+            Email:    r.FormValue("email"),
+            Phone:    r.FormValue("phone"),
         }
         
         err := user.Save()
         if err != nil {
-            tmpl := template.Must(template.ParseFiles(
-                filepath.Join("templates", "layout.html"),
-                filepath.Join("templates", "user_form.html"),
-            ))
-            
             data := PageData{
                 Title:       "用户信息提交",
-                Message:     "保存失败：" + err.Error(),
+                Message:     "提交失败",
                 MessageType: "error",
                 User:        user,
             }
@@ -56,7 +67,7 @@ func UserFormHandler(w http.ResponseWriter, r *http.Request) {
             return
         }
         
-        // 重定向到成功页面
-        http.Redirect(w, r, "/user?success=true", http.StatusSeeOther)
+        // 提交成功后重定向到GET请求，重置表单
+        http.Redirect(w, r, "/user", http.StatusSeeOther)
     }
 }

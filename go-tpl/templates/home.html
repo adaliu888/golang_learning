@@ -1,0 +1,53 @@
+{{define "content"}}
+<div class="container">
+    <div class="row">
+        <!-- 左侧导航栏 -->
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">导航菜单</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="/user" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user"></i> 个人信息
+                    </a>
+                    <a href="/blog" class="list-group-item list-group-item-action">
+                        <i class="fas fa-blog"></i> 博客管理
+                    </a>
+                    <a href="/" class="list-group-item list-group-item-action active">
+                        <i class="fas fa-home"></i> 首页
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧内容区 -->
+        <div class="col-md-9">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="mb-0">最新博客</h4>
+                </div>
+                <div class="card-body">
+                    {{if .Blogs}}
+                        {{range .Blogs}}
+                        <div class="blog-item mb-4">
+                            <h5><a href="/blog/{{.ID}}" class="text-decoration-none">{{.Title}}</a></h5>
+                            <p class="text-muted">
+                                <small>
+                                    <i class="fas fa-user"></i> {{.Author}}
+                                    <i class="fas fa-clock ml-2"></i> {{.CreatedAt.Format "2006-01-02 15:04"}}
+                                </small>
+                            </p>
+                            <p>{{.Summary}}</p>
+                            <hr>
+                        </div>
+                        {{end}}
+                    {{else}}
+                        <p class="text-center text-muted">暂无博客内容</p>
+                    {{end}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{end}} 
