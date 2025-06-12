@@ -1,0 +1,121 @@
+/* 表单容器样式 */
+.form-container {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 表单标题样式 */
+.form-title {
+    text-align: center;
+    color: #2196F3;
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: 500;
+}
+
+/* 表单组样式 */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+/* 输入框样式 */
+.form-group input {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid #2196F3;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    border-color: #1976D2;
+    outline: none;
+    box-shadow: 0 0 5px rgba(33, 150, 243, 0.2);
+}
+
+.form-group input::placeholder {
+    color: #999;
+    font-size: 13px;
+}
+
+/* 输入提示样式 */
+.input-tip {
+    font-size: 12px;
+    color: #666;
+    margin-top: 4px;
+    padding-left: 2px;
+    display: none;  /* 默认隐藏提示信息 */
+}
+
+/* 输入验证样式 */
+.form-group input:invalid {
+    border-color: #ff6b6b;
+}
+
+.form-group input:invalid + .input-tip {
+    color: #ff6b6b;
+    display: block;  /* 只在输入无效时显示提示信息 */
+}
+
+/* 按钮组样式 */
+.button-group {
+    margin-bottom: 0;
+    text-align: center;
+}
+
+/* 按钮样式 */
+.form-group button {
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 120px;
+    transition: all 0.3s ease;
+}
+
+.form-group button:hover {
+    background-color: #1976D2;
+    transform: translateY(-1px);
+}
+
+.form-group button:active {
+    transform: translateY(1px);
+}
+
+/* 响应式样式 */
+@media (max-width: 600px) {
+    .form-container {
+        padding: 15px;
+    }
+    
+    .form-group input {
+        padding: 8px;
+    }
+    
+    .form-group button {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    .input-tip {
+        font-size: 11px;
+    }
+} 

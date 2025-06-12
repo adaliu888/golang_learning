@@ -1,0 +1,17 @@
+<!-- templates/layout.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{.Title}}</title>
+    <link rel="stylesheet" href="/static/css/form.css">
+</head>
+<body>
+    <h1>{{.Title}}</h1>
+    {{if .Message}}
+    <div class="message {{.MessageType}}">
+        {{.Message}}
+    </div>
+    {{end}}
+    {{template "content" .}}
+</body>
+</html>
